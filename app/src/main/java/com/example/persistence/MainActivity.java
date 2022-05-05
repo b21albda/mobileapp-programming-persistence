@@ -3,10 +3,15 @@ package com.example.persistence;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,5 +47,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void readFromDb() {
+        Cursor cursor = db.query(DatabaseTables.COUNTRY.TABLE_NAME, null, null,null,null,null,null);
+        List<Country> countries = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            Country country = new Country(
+                    cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseTables.COUNTRY.COLUMN_NAME_ID)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(DatabaseTables.COUNTRY.COLUMN_NAME_NAME)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(DatabaseTables.COUNTRY.COLUMN_NAME_CAPITAL)),
+                    cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseTables.COUNTRY.COLUMN_NAME_POPULATION))
+            );
+            countries.add(country);
+        }
+
+        cursor.close();
+
+        writeToActivity(countries);
+    }
+
+    private void writeToActivity(final List<Country> countries) {
+        TextView tv_display = findViewById(R.id.tv_display);
+
+        if (countries.isEmpty()) {
+            tv_display.setText("No data in database");
+            return;
+        }
+
+        String text = "";
+
+        for (Country country : countries) {
+            text += country.getName() + " " + country.getCapital() + " " + country.getPopulation() + "\n";
+        }
+
+        tv_display.setText(text);
     }
 }

@@ -5,4 +5,5 @@
     <string name="hint_country">Country</string>
     <string name="hint_capital">Capital</string>
     <string name="hint_population">Population</string>
+    <string name="tv_text">Waiting for button press</string>
 </resources>
