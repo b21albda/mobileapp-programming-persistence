@@ -7,12 +7,65 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_read"
+        app:layout_constraintStart_toStartOf="@+id/et_population"
+        app:layout_constraintTop_toBottomOf="@+id/et_population" />
+
+    <Button
+        android:id="@+id/btn_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_write"
+        app:layout_constraintEnd_toEndOf="@+id/et_population"
+        app:layout_constraintTop_toBottomOf="@+id/et_population" />
+
+    <EditText
+        android:id="@+id/et_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="@string/hint_country"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/et_capital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="10dp"
+        android:hint="@string/hint_capital"
+        app:layout_constraintEnd_toEndOf="@+id/et_country"
+        app:layout_constraintStart_toStartOf="@+id/et_country"
+        app:layout_constraintTop_toBottomOf="@+id/et_country" />
+
+    <EditText
+        android:id="@+id/et_population"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="10dp"
+        android:hint="@string/hint_population"
+        app:layout_constraintEnd_toEndOf="@+id/et_capital"
+        app:layout_constraintStart_toStartOf="@+id/et_capital"
+        app:layout_constraintTop_toBottomOf="@+id/et_capital" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Persistence</string>
+    <string name="btn_read">Read</string>
+    <string name="btn_write">Write</string>
+    <string name="hint_country">Country</string>
+    <string name="hint_capital">Capital</string>
+    <string name="hint_population">Population</string>
 </resources>
