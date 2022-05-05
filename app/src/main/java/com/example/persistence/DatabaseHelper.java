@@ -7,17 +7,23 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "country.db";
+
     public DatabaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+        sqLiteDatabase.execSQL(DatabaseTables.SQL_CREATE_TABLE_COUNTRY);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        sqLiteDatabase.execSQL(DatabaseTables.SQL_DELETE_TABLE_COUNTRY);
+        onCreate(sqLiteDatabase);
 
     }
 }
