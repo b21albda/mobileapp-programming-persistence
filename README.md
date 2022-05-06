@@ -1,39 +1,35 @@
 
 # Rapport
 
-**Skriv din rapport här!**
+Skapade en layout med en textvy, tre inputfält och två knappar, en knapp som skriver till databasen och en som läser från den.
+Skapade sedan två klasser en för att definera tablerna som ska finnas i databasen och en för att skapa databasen.
+Sedan skapades en klass country för att kunna skapa ett objekt av det som lagras i databasen.
+Slutligen så skapades metoderna för att läsa och skriva till databasen beroende på vilken knapp som klickats på.
 
-_Du kan ta bort all text som finns sedan tidigare_.
-
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
-
+Kodstycket får in en lista av countries, är listan tom ska texten i textviewn sättas till no data in database.
+Finns det data i countries loopas den igenom och namnet, huvudstaden och folkmängden hämtas och sparas i en strän.
+Texten i textviewn sätts sedan till den sparade strängen.
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+private void writeToActivity(final List<Country> countries) {
+    TextView tv_display = findViewById(R.id.tv_display);
+
+    if (countries.isEmpty()) {
+        tv_display.setText("No data in database");
+        return;
     }
+
+    String text = "";
+
+    for (Country country : countries) {
+        text += country.getName() + " " + country.getCapital() + " " + country.getPopulation() + "\n";
+    }
+
+    tv_display.setText(text);
 }
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
-
-![](android.png)
+![](1.png)
+![](2.png)
 
 Läs gärna:
 
